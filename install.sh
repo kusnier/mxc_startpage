@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -av --progress . mxc:~/public_subdomains/mxc_startpage
+rsync -av --del --progress . mxc:~/public_subdomains/mxc_startpage
