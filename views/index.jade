@@ -1,0 +1,15 @@
+h1.intro= title
+ul.communitybuttons
+  each button in buttons
+    - var className= 'logo_' + button.name.replace(/\W/, '')
+    li
+      a(href="#{button.link}")
+        style(type="text/css")
+          .#{className} {
+             background-image: url('/images/buttons/#{button.name}.png');
+           }
+          li:hover .#{className} {
+             background-image: url('/images/buttons/#{button.name}_hover.png');
+           }
+        span(class="communityicon #{className}")
+        #{button.name}

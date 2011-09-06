@@ -1,0 +1,61 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #a1a8a1;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.intro {
+  font-size: 9em;
+  width: 95%;
+  margin: auto auto 30px auto;
+  text-align: center;
+  z-index: -10;
+  text-shadow: 2px 2px 0 #aaccaa;
+  letter-spacing: 0.2em;
+}
+ span.communityicon {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  float: left;
+  height: 64px;
+  margin-left: -4px;
+  position: relative;
+  top: 8px;
+  width: 64px;
+}
+
+ul.communitybuttons {
+  text-align: center;
+}
+
+ul.communitybuttons a {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+ul.communitybuttons li {
+  font: 21px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #333333;
+  background: #d1d1d1; /* for non-css3 browsers */
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebebeb', endColorstr='#a1a1a1'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#a1a1a1)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #ebebeb,  #a1a1a1); /* for firefox 3.6+ */
+  border-width: 1px;
+  border-style: solid;
+  border-color: #CCCCCC #EEEEEE #EEEEEE #CCCCCC;
+  border-radius: 10px 10px 10px 10px;
+  display: inline-block;
+  padding: 0px 25px;
+  line-height: 80px;
+  width: 200px;
+  margin: 5px;
+  list-style-type: none;
+  cursor: pointer;
+  text-shadow: 1px 1px 0 #FFFFFF;
+}
