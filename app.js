@@ -15,7 +15,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'your secret here' }));
+//  app.use(express.session({ secret: 'your secret here' }));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
@@ -49,5 +49,5 @@ app.get('/', function(req, res){
   });
 });
 
-app.listen(1400);
+app.listen(1400, 'localhost');
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
