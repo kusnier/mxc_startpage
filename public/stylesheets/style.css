@@ -36,6 +36,7 @@ ul.communitybuttons a {
   text-align: center;
   text-decoration: none;
   color: black;
+  cursor: pointer;
 }
 
 ul.communitybuttons li {
@@ -56,6 +57,5 @@ ul.communitybuttons li {
   width: 200px;
   margin: 5px;
   list-style-type: none;
-  cursor: pointer;
   text-shadow: 1px 1px 0 #FFFFFF;
 }
