@@ -3,9 +3,17 @@
  * Module dependencies.
  */
 
-var express = require('express');
+var express= require('express'),
+  Db = require('mongodb').Db,
+  Server = require('mongodb').Server,
+  Connection = require('mongodb').Connection;
 
-var app = module.exports = express.createServer();
+// Db settings
+var host = 'localhost';
+var port = Connection.DEFAULT_PORT;
+var db= new Db('mxc', new Server(host, port, {}), {native_parser:false});
+
+var app= module.exports = express.createServer();
 
 // Configuration
 
@@ -28,26 +36,28 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Buttons, replace later with mongodb
-var buttons= [
-  {name: 'vimrc',    color: {fg: '#000000', bg: '#FF0000'}, link: 'https://github.com/kusnier/dotfiles/raw/master/home/vimrc'},
-  {name: 'github',   color: {fg: '#000000', bg: '#FF0000'}, link: 'https://github.com/kusnier'},
-  {name: 'skype',    color: {fg: '#000000', bg: '#0000FF'}, link: 'skype:kuseba?add'},
-  {name: 'facebook', color: {fg: '#000000', bg: '#00FF00'}, link: 'http://www.facebook.com/sebastian.kusnier'},
-  {name: 'google+',  color: {fg: '#000000', bg: '#00FF00'}, link: 'https://plus.google.com/106738679594465136514'},
-  {name: 'nk.pl',    color: {fg: '#000000', bg: '#00FF00'}, link: 'http://nk.pl/profile/16665973'},
-  {name: 'twitter',  color: {fg: '#000000', bg: '#00FF00'}, link: 'http://twitter.com/#!/skusnier'},
-  {name: 'blog',     color: {fg: '#000000', bg: '#00EEEE'}, link: 'http://kusnier.net'}
-];
+function loadButtons(req, res, next) {
+  db.collection('communitybuttons', function(err, collection) {
+    collection.find({}).toArray(function(err, buttons) {
+      if (err) next(new Error("Can't get buttons."));
+      res.buttons= buttons;
+      next();
+    });
+  });
+}
 
 // Routes
-
-app.get('/', function(req, res){
+app.get('/', loadButtons, function(req, res){
   res.render('index', {
     title: 'matrixcode.de',
-    buttons: buttons
+     buttons: res.buttons
   });
 });
 
-app.listen(1400, 'localhost');
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+db.open(function(err, db){
+  if(err) throw err
+
+  app.listen(1400, 'localhost');
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+});
+
