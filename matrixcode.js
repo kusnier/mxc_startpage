@@ -11,7 +11,7 @@ var express= require('express'),
 // Db settings
 var host = 'localhost';
 var port = Connection.DEFAULT_PORT;
-var db= new Db('mxc', new Server(host, port, {}), {native_parser:false});
+var db= new Db('mxc', new Server(host, port, {auto_reconnect: true}), {native_parser:false});
 
 var app= module.exports = express.createServer();
 
