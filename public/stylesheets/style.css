@@ -26,6 +26,8 @@ a {
   position: relative;
   top: 8px;
   width: 64px;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
 }
 
 ul.communitybuttons {
