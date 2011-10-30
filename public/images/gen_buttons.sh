@@ -1,2 +1,2 @@
 #!/bin/sh
-montage -tile 2x -geometry 128x128 buttons/*.png buttons.png
+montage -background None -tile 2x -geometry 64x64 buttons/*.png buttons.png
