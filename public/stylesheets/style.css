@@ -17,7 +17,8 @@ a {
   text-shadow: 2px 2px 0 #aaccaa;
   letter-spacing: 0.2em;
 }
- span.communityicon {
+span.communityicon {
+  background-image: url('/images/buttons.png');
   background-position: 0 0;
   background-repeat: no-repeat;
   float: left;
@@ -29,6 +30,22 @@ a {
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
 }
+span.logo_facebook { background-position: 0  -64px; }
+span.logo_github   { background-position: 0 -128px; }
+span.logo_google   { background-position: 0 -192px; }
+span.logo_nkpl     { background-position: 0 -256px; }
+span.logo_skype    { background-position: 0 -320px; }
+span.logo_twitter  { background-position: 0 -384px; }
+span.logo_vimrc    { background-position: 0 -448px; }
+
+li:hover span.logo_blog     { background-position: -64px      0; }
+li:hover span.logo_facebook { background-position: -64px  -64px; }
+li:hover span.logo_github   { background-position: -64px -128px; }
+li:hover span.logo_google   { background-position: -64px -192px; }
+li:hover span.logo_nkpl     { background-position: -64px -256px; }
+li:hover span.logo_skype    { background-position: -64px -320px; }
+li:hover span.logo_twitter  { background-position: -64px -384px; }
+li:hover span.logo_vimrc    { background-position: -64px -448px; }
 
 ul.communitybuttons {
   text-align: center;
