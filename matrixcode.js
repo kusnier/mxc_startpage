@@ -48,6 +48,16 @@ function loadButtons(req, res, next) {
 
 // Routes
 app.get('/', loadButtons, function(req, res){
+  var host= req.header('Host');
+  prefix= host.split('.')[0];
+
+  for (var i=0; i < res.buttons.length; i++) {
+    if (res.buttons[i].name.replace(/\W/, '') == prefix) {
+      res.redirect(res.buttons[i].link)
+      return;
+    }
+  };
+
   res.render('index', {
     title: 'matrixcode.de',
      buttons: res.buttons

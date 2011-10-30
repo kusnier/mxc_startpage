@@ -3,6 +3,11 @@ ul.communitybuttons
   each button in buttons
     - var className= 'logo_' + button.name.replace(/\W/, '')
     li
-      a(href="#{button.link}")
-        span(class="communityicon #{className}")
-        #{button.name}
+      if button.link.match('http')
+        a(href="http://#{button.name.replace(/\W/, '')}.matrixcode.de")
+          span(class="communityicon #{className}")
+          #{button.name}
+      else
+        a(href="#{button.link}")
+          span(class="communityicon #{className}")
+          #{button.name}
