@@ -48,7 +48,7 @@ function loadButtons(req, res, next) {
 
 // Routes
 app.get('/', loadButtons, function(req, res){
-  var host= req.header('Host');
+  var host= req.header('X-Forwarded-Host');
   prefix= host.split('.')[0];
 
   for (var i=0; i < res.buttons.length; i++) {
