@@ -4,13 +4,16 @@
  */
 
 var express= require('express'),
-  Db = require('mongodb').Db,
-  Server = require('mongodb').Server,
-  Connection = require('mongodb').Connection;
+  mongodb = require("mongodb"),
+  Db = mongodb.Db,
+  Server = mongodb.Server;
+
+// Http port
+var listenport= 1400;
 
 // Db settings
 var host = 'localhost';
-var port = Connection.DEFAULT_PORT;
+var port = 27017;
 var db= new Db('mxc', new Server(host, port, {auto_reconnect: true}), {native_parser:false});
 
 var app= module.exports = express.createServer();
@@ -53,10 +56,10 @@ app.get('/', loadButtons, function(req, res){
 
   for (var i=0; i < res.buttons.length; i++) {
     if (res.buttons[i].name.replace(/\W/, '') == prefix) {
-      res.redirect(res.buttons[i].link)
+      res.redirect(res.buttons[i].link);
       return;
     }
-  };
+  }
 
   res.render('index', {
     title: 'matrixcode.de',
@@ -65,9 +68,12 @@ app.get('/', loadButtons, function(req, res){
 });
 
 db.open(function(err, db){
-  if(err) throw err
+  if(err) throw err;
 
-  app.listen(1400, 'localhost');
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  app.listen(listenport, 'localhost');
+  console.log("Express server listening on port %d in %s mode",
+    app.address() !== null ? app.address().port : listenport,
+    app.settings.env
+  );
 });
 
