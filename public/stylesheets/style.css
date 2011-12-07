@@ -78,3 +78,27 @@ ul.communitybuttons li {
   list-style-type: none;
   text-shadow: 1px 1px 0 #FFFFFF;
 }
+
+@-moz-keyframes mx_rotate {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes mx_rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+li:hover span {
+-moz-animation: mx_rotate 0.4s linear infinite;
+-webkit-animation: mx_rotate 0.4s linear infinite;
+}
+
