@@ -17,7 +17,7 @@ a {
   text-shadow: 2px 2px 0 #aaccaa;
   letter-spacing: 0.2em;
 }
-span.communityicon {
+.communityicon {
   background-image: url('/images/buttons.png');
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -29,6 +29,8 @@ span.communityicon {
   width: 64px;
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  transform: rotate(5deg);
 }
 span.logo_facebook { background-position: 0  -64px; }
 span.logo_github   { background-position: 0 -128px; }
@@ -38,14 +40,14 @@ span.logo_skype    { background-position: 0 -320px; }
 span.logo_twitter  { background-position: 0 -384px; }
 span.logo_vimrc    { background-position: 0 -448px; }
 
-li:hover span.logo_blog     { background-position: -64px      0; }
-li:hover span.logo_facebook { background-position: -64px  -64px; }
-li:hover span.logo_github   { background-position: -64px -128px; }
-li:hover span.logo_google   { background-position: -64px -192px; }
-li:hover span.logo_nkpl     { background-position: -64px -256px; }
-li:hover span.logo_skype    { background-position: -64px -320px; }
-li:hover span.logo_twitter  { background-position: -64px -384px; }
-li:hover span.logo_vimrc    { background-position: -64px -448px; }
+li:hover .logo_blog     { background-position: -64px      0; }
+li:hover .logo_facebook { background-position: -64px  -64px; }
+li:hover .logo_github   { background-position: -64px -128px; }
+li:hover .logo_google   { background-position: -64px -192px; }
+li:hover .logo_nkpl     { background-position: -64px -256px; }
+li:hover .logo_skype    { background-position: -64px -320px; }
+li:hover .logo_twitter  { background-position: -64px -384px; }
+li:hover .logo_vimrc    { background-position: -64px -448px; }
 
 ul.communitybuttons {
   text-align: center;
@@ -71,7 +73,7 @@ ul.communitybuttons li {
   border-color: #CCCCCC #EEEEEE #EEEEEE #CCCCCC;
   border-radius: 10px 10px 10px 10px;
   display: inline-block;
-  padding: 0px 25px;
+  padding: 0 25px;
   line-height: 80px;
   width: 200px;
   margin: 5px;
@@ -79,26 +81,30 @@ ul.communitybuttons li {
   text-shadow: 1px 1px 0 #FFFFFF;
 }
 
+@-ms-keyframes mx_rotate_s {
+  0% { -ms-transform: rotate(5deg); }
+  100% { -ms-transform: rotate(365deg);}
+}
+
 @-moz-keyframes mx_rotate {
-  0% {
-    -moz-transform: rotate(5deg);
-  }
-  100% {
-    -moz-transform: rotate(365deg);
-  }
+  0% { -moz-transform: rotate(5deg); }
+  100% { -moz-transform: rotate(365deg);}
 }
 
 @-webkit-keyframes mx_rotate {
-  0% {
-    -webkit-transform: rotate(5deg);
-  }
-  100% {
-    -webkit-transform: rotate(365deg);
-  }
+  0% { -webkit-transform: rotate(5deg); }
+  100% { -webkit-transform: rotate(365deg);}
 }
+
+@keyframes mx_rotate {
+  0% { transform: rotate(5deg); }
+  100% { transform: rotate(365deg);}
+}
+
 
 li:hover span {
 -moz-animation: mx_rotate 0.4s linear infinite;
 -webkit-animation: mx_rotate 0.4s linear infinite;
+animation: mx_rotate 0.4s linear infinite;
 }
 
