@@ -81,19 +81,19 @@ ul.communitybuttons li {
 
 @-moz-keyframes mx_rotate {
   0% {
-    -moz-transform: rotate(0deg);
+    -moz-transform: rotate(5deg);
   }
   100% {
-    -moz-transform: rotate(360deg);
+    -moz-transform: rotate(365deg);
   }
 }
 
 @-webkit-keyframes mx_rotate {
   0% {
-    -webkit-transform: rotate(0deg);
+    -webkit-transform: rotate(5deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
+    -webkit-transform: rotate(365deg);
   }
 }
 
