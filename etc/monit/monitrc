@@ -1,0 +1,10 @@
+#!monit
+set logfile /var/log/monit.log
+
+check process nodejs with pidfile "/var/run/mxc_startpage.pid"
+    start program = "/sbin/start mxc_startpage"
+    stop program  = "/sbin/stop mxc_startpage"
+    if failed port 1400 protocol HTTP
+        request /
+        with timeout 10 seconds
+        then restart

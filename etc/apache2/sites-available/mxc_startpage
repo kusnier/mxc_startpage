@@ -1,0 +1,20 @@
+# vim:ft=apache
+<VirtualHost *:80>
+  ServerName matrixcode.de
+  ServerAlias vimrc.matrixcode.de github.matrixcode.de skype.matrixcode.de facebook.matrixcode.de google.matrixcode.de nkpl.matrixcode.de twitter.matrixcode.de blog.matrixcode.de
+  ServerAdmin seek@matrixcode.de
+  DocumentRoot /home/seek/public_subdomains/mxcode
+
+  ProxyRequests Off
+
+  <Proxy *>
+    Order deny,allow
+    Allow from all
+  </Proxy>
+
+   RequestHeader unset Referer 
+
+  ProxyPass / http://localhost:1400/ retry=0 timeout=120
+  ProxyPassReverse / http://loalhost:1400/
+
+</VirtualHost>

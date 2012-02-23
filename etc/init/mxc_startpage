@@ -1,0 +1,29 @@
+#!upstart
+# vim:ft=upstart
+# TODO: test https://github.com/nodejitsu/forever
+description "matrixcode.de startpage"
+author      "seek@matrixcode.de"
+
+#start on (local-filesystems and net-device-up IFACE=eth0)
+start on startup
+stop on shutdown
+
+respawn
+respawn limit 3 5
+
+script
+    export HOME="/root"
+
+    echo $$ > /var/run/mxc_startpage.pid
+    exec sudo -u seek sh -c "/home/seek/local/node/bin/node /home/seek/public_subdomains/mxc_startpage/matrixcode.js >> /var/log/mxc_startpage.sys.log 2>&1"
+end script
+
+pre-start script
+    # Date format same as (new Date()).toISOString() for consistency
+    echo "[`date -u +%Y-%m-%dT%T.%3NZ`] (sys) Starting" >> /var/log/mxc_startpage.sys.log
+end script
+
+pre-stop script
+    rm /var/run/mxc_startpage.pid
+    echo "[`date -u +%Y-%m-%dT%T.%3NZ`] (sys) Stopping" >> /var/log/mxc_startpage.sys.log
+end script
