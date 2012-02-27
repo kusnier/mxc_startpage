@@ -1,3 +1,4 @@
+var nodeunit = require('nodeunit');
 var request = require('request');
 
 var userAgents= {
@@ -12,6 +13,19 @@ var defaultHeader= {
 request= request.defaults({
   headers: defaultHeader
 });
+
+testRedirect= function(test, source, destination) {
+  request.get(source, function(error, res, body) {
+    test.equal(error, undefined);
+    if (!error) {
+      test.ok([200, 302].indexOf(res.statusCode) > -1, 'Invalid response.statusCode (200, 302)');
+      test.equal(res.request.uri.href, destination, 'Desired redirct not reached.');
+    }
+    test.expect(3);
+    test.done();
+  });
+};
+
 
 exports.alwaystrue= function(test) {
   test.equal(1, 1);
@@ -29,42 +43,39 @@ exports.mxconline= function(test) {
   });
 };
 
-var testRedirect= function(test, source, destination) {
-  request.get(source, function(error, res, body) {
-    test.equal(error, undefined);
-    if (!error) {
-      test.ok([200, 302].indexOf(res.statusCode) > -1, 'Invalid response.statusCode (200, 302)');
-      test.equal(res.request.uri.href, destination, 'Desired redirct not reached.');
-    }
-    test.expect(3);
-    test.done();
-  });
-};
 
-exports.blogredirect= function(test) {
-  testRedirect(test, 'http://blog.matrixcode.de', 'http://kusnier.net/');
-};
+exports.redirect= nodeunit.testCase({
+  setUp: function(callback) {
+    callback();
+  },
+  tearDown: function(callback) { callback(); },
 
-exports.googleredirect= function(test) {
-  testRedirect(test, 'http://google.matrixcode.de', 'https://plus.google.com/106738679594465136514');
-};
+  blog: function(test) {
+    testRedirect(test, 'http://blog.matrixcode.de', 'http://kusnier.net/');
+  },
 
-exports.vimrcredirect= function(test) {
-  testRedirect(test, 'http://vimrc.matrixcode.de', 'https://raw.github.com/kusnier/dotfiles/master/home/vimrc');
-};
+  google: function(test) {
+    testRedirect(test, 'http://google.matrixcode.de', 'https://plus.google.com/106738679594465136514');
+  },
 
-exports.githubredirect= function(test) {
-  testRedirect(test, 'http://github.matrixcode.de', 'https://github.com/kusnier');
-};
+  vimrc: function(test) {
+    testRedirect(test, 'http://vimrc.matrixcode.de', 'https://raw.github.com/kusnier/dotfiles/master/home/vimrc');
+  },
 
-exports.facebookredirect= function(test) {
-  testRedirect(test, 'http://facebook.matrixcode.de', 'http://www.facebook.com/sebastian.kusnier');
-};
+  github: function(test) {
+    testRedirect(test, 'http://github.matrixcode.de', 'https://github.com/kusnier');
+  },
 
-exports.nkplredirect= function(test) {
-  testRedirect(test, 'http://nkpl.matrixcode.de', 'https://nk.pl/main?target=%2Fprofile%2F16665973');
-};
+  facebook: function(test) {
+    testRedirect(test, 'http://facebook.matrixcode.de', 'http://www.facebook.com/sebastian.kusnier');
+  },
 
-exports.twitterredirect= function(test) {
-  testRedirect(test, 'http://twitter.matrixcode.de', 'http://twitter.com/#!/skusnier');
-};
+  nkpl: function(test) {
+    testRedirect(test, 'http://nkpl.matrixcode.de', 'https://nk.pl/main?target=%2Fprofile%2F16665973');
+  },
+
+  twitter: function(test) {
+    testRedirect(test, 'http://twitter.matrixcode.de', 'http://twitter.com/#!/skusnier');
+  }
+
+});
