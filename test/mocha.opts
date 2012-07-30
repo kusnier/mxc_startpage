@@ -1,0 +1,5 @@
+--reporter spec
+--ui tdd
+--timeout 10000
+--slow 5000
+--growl
