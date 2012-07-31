@@ -1,13 +1,16 @@
-h1.intro= title
-ul.communitybuttons
-  each button in buttons
-    - var className= 'logo_' + button.name.replace(/\W/, '')
-    li
-      if button.link.match('http')
-        a(href="http://#{button.name.replace(/\W/, '')}.matrixcode.de")
-          span(class="communityicon #{className}")
-          #{button.name}
-      else
-        a(href="#{button.link}")
-          span(class="communityicon #{className}")
-          #{button.name}
+extends layout
+
+block content
+  h1.intro= title
+  ul.communitybuttons
+    each button in buttons
+      - var className= 'logo_' + button.name.replace(/\W/, '')
+      li
+        if button.link.match('http')
+          a(href="http://#{button.name.replace(/\W/, '')}.matrixcode.de")
+            span(class="communityicon #{className}")
+            span #{button.name}
+        else
+          a(href="#{button.link}")
+            span(class="communityicon #{className}")
+            span #{button.name}

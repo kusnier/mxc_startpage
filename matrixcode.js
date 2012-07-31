@@ -4,6 +4,9 @@
  */
 
 var express= require('express'),
+  routes = require('./routes'),
+  http = require('http'),
+  path = require('path'),
   mongodb = require("mongodb"),
   Db = mongodb.Db,
   Server = mongodb.Server;
@@ -15,20 +18,23 @@ var listenport= 1400;
 var host = 'localhost';
 var port = 27017;
 var db= new Db('mxc', new Server(host, port, {auto_reconnect: true}), {native_parser:false});
-
-var app= module.exports = express.createServer();
+// App
+var app = express();
 
 // Configuration
 
 app.configure(function(){
+  app.set('port', process.env.PORT || listenport);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
 //  app.use(express.session({ secret: 'your secret here' }));
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function(){
@@ -49,30 +55,16 @@ function loadButtons(req, res, next) {
   });
 }
 
-// Routes
-app.get('/', loadButtons, function(req, res){
-  var host= req.header('X-Forwarded-Host');
-  prefix= host.split('.')[0];
+app.get('/', loadButtons, routes.index);
 
-  for (var i=0; i < res.buttons.length; i++) {
-    if (res.buttons[i].name.replace(/\W/, '') == prefix) {
-      res.redirect(res.buttons[i].link);
-      return;
-    }
-  }
-
-  res.render('index', {
-    title: 'matrixcode.de',
-     buttons: res.buttons
-  });
-});
-
+// Open db connection and start listening on port
 db.open(function(err, db){
   if(err) throw err;
 
-  app.listen(listenport, 'localhost');
+  app.listen(app.get('port'), 'localhost');
+
   console.log("Express server listening on port %d in %s mode",
-    app.address() !== null ? app.address().port : listenport,
+    app.get('port'),
     app.settings.env
   );
 });
