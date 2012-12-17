@@ -71,7 +71,7 @@ suite('Redirects', function(){
 
   suite('facebook.matrixcode.de', function() {
     test('should be redirected to my facebook profile', function(done) {
-      testRedirect(done, 'http://facebook.matrixcode.de', 'http://www.facebook.com/sebastian.kusnier');
+      testRedirect(done, 'http://facebook.matrixcode.de', 'https://www.facebook.com/sebastian.kusnier');
     });
   });
 
