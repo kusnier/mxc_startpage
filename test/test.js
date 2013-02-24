@@ -83,7 +83,7 @@ suite('Redirects', function(){
 
   suite('twitter.matrixcode.de', function() {
     test('should be redirected to my twitter profile', function(done) {
-      testRedirect(done, 'http://twitter.matrixcode.de', 'http://twitter.com/#!/skusnier');
+      testRedirect(done, 'http://twitter.matrixcode.de', 'https://twitter.com/skusnier');
     });
   });
 
