@@ -31,9 +31,9 @@ suite('Online', function(){
     // ...
   });
 
-  suite('request.get("matrixcode.de")', function(){
+  suite('request.get("kusnier.net")', function(){
     test('should return statusCode 200', function(){
-      request.get('http://matrixcode.de', function(error, res, body) {
+      request.get('http://kusnier.net', function(error, res, body) {
         assert.equal(error, undefined);
         if (!error) {
           assert.equal(res.statusCode, 200);
@@ -45,45 +45,45 @@ suite('Online', function(){
 
 suite('Redirects', function(){
 
-  suite('blog.matrixcode.de', function() {
+  suite('blog.kusnier.net', function() {
     test('should be redirected to http://kusnier.net/', function(done) {
-      testRedirect(done, 'http://blog.matrixcode.de', 'http://kusnier.net/');
+      testRedirect(done, 'http://blog.kusnier.net', 'http://kusnier.net/');
     });
   });
 
-  suite('google.matrixcode.de', function() {
+  suite('google.kusnier.net', function() {
     test('should be redirected to google+ profile', function(done) {
-      testRedirect(done, 'http://google.matrixcode.de', 'https://plus.google.com/106738679594465136514');
+      testRedirect(done, 'http://google.kusnier.net', 'https://plus.google.com/106738679594465136514');
     });
   });
 
-  suite('vimrc.matrixcode.de', function() {
+  suite('vimrc.kusnier.net', function() {
     test('should be redirected to my vimrc on github', function(done) {
-      testRedirect(done, 'http://vimrc.matrixcode.de', 'https://raw.github.com/kusnier/dotfiles/master/home/vimrc');
+      testRedirect(done, 'http://vimrc.kusnier.net', 'https://raw.github.com/kusnier/dotfiles/master/home/vimrc');
     });
   });
 
-  suite('github.matrixcode.de', function() {
+  suite('github.kusnier.net', function() {
     test('should be redirected my github profile', function(done) {
-      testRedirect(done, 'http://github.matrixcode.de', 'https://github.com/kusnier');
+      testRedirect(done, 'http://github.kusnier.net', 'https://github.com/kusnier');
     });
   });
 
-  suite('facebook.matrixcode.de', function() {
+  suite('facebook.kusnier.net', function() {
     test('should be redirected to my facebook profile', function(done) {
-      testRedirect(done, 'http://facebook.matrixcode.de', 'https://www.facebook.com/sebastian.kusnier');
+      testRedirect(done, 'http://facebook.kusnier.net', 'https://www.facebook.com/sebastian.kusnier');
     });
   });
 
-  suite('nkpl.matrixcode.de', function() {
+  suite('nkpl.kusnier.net', function() {
     test('should be redirected to my nk.pl profile', function(done) {
-      testRedirect(done, 'http://nkpl.matrixcode.de', 'https://nk.pl/main?target=%2Fprofile%2F16665973');
+      testRedirect(done, 'http://nkpl.kusnier.net', 'https://nk.pl/main?target=%2Fprofile%2F16665973');
     });
   });
 
-  suite('twitter.matrixcode.de', function() {
+  suite('twitter.kusnier.net', function() {
     test('should be redirected to my twitter profile', function(done) {
-      testRedirect(done, 'http://twitter.matrixcode.de', 'https://twitter.com/skusnier');
+      testRedirect(done, 'http://twitter.kusnier.net', 'https://twitter.com/skusnier');
     });
   });
 

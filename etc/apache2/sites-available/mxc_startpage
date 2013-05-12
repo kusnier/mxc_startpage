@@ -1,9 +1,13 @@
 # vim:ft=apache
 <VirtualHost *:80>
-  ServerName matrixcode.de
-  ServerAlias vimrc.matrixcode.de github.matrixcode.de skype.matrixcode.de facebook.matrixcode.de google.matrixcode.de nkpl.matrixcode.de twitter.matrixcode.de blog.matrixcode.de
-  ServerAdmin seek@matrixcode.de
-  DocumentRoot /home/seek/public_subdomains/mxcode
+  ServerName kusnier.net
+  ServerAlias vimrc.kusnier.net github.kusnier.net skype.kusnier.net facebook.kusnier.net google.kusnier.net nkpl.kusnier.net twitter.kusnier.net blog.kusnier.net
+  ServerAdmin sebastian@kusnier.net
+
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} !^/stylesheets/
+  RewriteCond %{REQUEST_URI} !^/images/
+  RewriteRule ^(/.+)$ http://blog.kusnier.net$1 
 
   ProxyRequests Off
 
@@ -17,4 +21,8 @@
   ProxyPass / http://localhost:1400/ retry=0 timeout=120
   ProxyPassReverse / http://loalhost:1400/
 
+  DocumentRoot /home/seek/public_subdomains/mxcode
+
+  ErrorLog /var/log/apache2/kusnier.net_error.log
+  CustomLog /var/log/apache2/kusnier.net_access.log combined
 </VirtualHost>

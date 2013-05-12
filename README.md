@@ -1,4 +1,4 @@
-This is the start page for matrixcode.de
+This is the start page for kusnier.net
 =============
 * Implementation in javascript
 * Node.js
@@ -6,5 +6,5 @@ This is the start page for matrixcode.de
 * Jade-lang
 * MongoDB
 
-Open [link](http://matrixcode.de) to see this code in action.
+Open [link](http://kusnier.net) to see this code in action.
 

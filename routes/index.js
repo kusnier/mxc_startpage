@@ -16,7 +16,7 @@ exports.index = function(req, res){
   }
 
   res.render('index', {
-    title: 'matrixcode.de',
+    title: 'kusnier.net',
      buttons: res.buttons
   });
 };

@@ -33,7 +33,7 @@ exports.alwaystrue= function(test) {
 };
 
 exports.mxconline= function(test) {
-  request.get('http://matrixcode.de', function(error, res, body) {
+  request.get('http://kusnier.net', function(error, res, body) {
     test.equal(error, undefined);
     if (!error) {
       test.equal(res.statusCode, 200);
@@ -51,31 +51,31 @@ exports.redirect= nodeunit.testCase({
   tearDown: function(callback) { callback(); },
 
   blog: function(test) {
-    testRedirect(test, 'http://blog.matrixcode.de', 'http://kusnier.net/');
+    testRedirect(test, 'http://blog.kusnier.net', 'http://kusnier.net/');
   },
 
   google: function(test) {
-    testRedirect(test, 'http://google.matrixcode.de', 'https://plus.google.com/106738679594465136514');
+    testRedirect(test, 'http://google.kusnier.net', 'https://plus.google.com/106738679594465136514');
   },
 
   vimrc: function(test) {
-    testRedirect(test, 'http://vimrc.matrixcode.de', 'https://raw.github.com/kusnier/dotfiles/master/home/vimrc');
+    testRedirect(test, 'http://vimrc.kusnier.net', 'https://raw.github.com/kusnier/dotfiles/master/home/vimrc');
   },
 
   github: function(test) {
-    testRedirect(test, 'http://github.matrixcode.de', 'https://github.com/kusnier');
+    testRedirect(test, 'http://github.kusnier.net', 'https://github.com/kusnier');
   },
 
   facebook: function(test) {
-    testRedirect(test, 'http://facebook.matrixcode.de', 'http://www.facebook.com/sebastian.kusnier');
+    testRedirect(test, 'http://facebook.kusnier.net', 'http://www.facebook.com/sebastian.kusnier');
   },
 
   nkpl: function(test) {
-    testRedirect(test, 'http://nkpl.matrixcode.de', 'https://nk.pl/main?target=%2Fprofile%2F16665973');
+    testRedirect(test, 'http://nkpl.kusnier.net', 'https://nk.pl/main?target=%2Fprofile%2F16665973');
   },
 
   twitter: function(test) {
-    testRedirect(test, 'http://twitter.matrixcode.de', 'http://twitter.com/#!/skusnier');
+    testRedirect(test, 'http://twitter.kusnier.net', 'http://twitter.com/#!/skusnier');
   }
 
 });
