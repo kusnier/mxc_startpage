@@ -1,7 +1,7 @@
 # vim:ft=apache
 <VirtualHost *:80>
   ServerName kusnier.net
-  ServerAlias vimrc.kusnier.net github.kusnier.net skype.kusnier.net facebook.kusnier.net google.kusnier.net nkpl.kusnier.net twitter.kusnier.net blog.kusnier.net
+  ServerAlias vimrc.kusnier.net github.kusnier.net skype.kusnier.net facebook.kusnier.net google.kusnier.net nkpl.kusnier.net twitter.kusnier.net
   ServerAdmin sebastian@kusnier.net
 
   RewriteEngine On
