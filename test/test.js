@@ -45,12 +45,6 @@ suite('Online', function(){
 
 suite('Redirects', function(){
 
-  suite('blog.kusnier.net', function() {
-    test('should be redirected to http://kusnier.net/', function(done) {
-      testRedirect(done, 'http://blog.kusnier.net', 'http://kusnier.net/');
-    });
-  });
-
   suite('google.kusnier.net', function() {
     test('should be redirected to google+ profile', function(done) {
       testRedirect(done, 'http://google.kusnier.net', 'https://plus.google.com/106738679594465136514');
