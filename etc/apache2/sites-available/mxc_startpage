@@ -7,7 +7,7 @@
   RewriteEngine On
   RewriteCond %{REQUEST_URI} !^/stylesheets/
   RewriteCond %{REQUEST_URI} !^/images/
-  RewriteRule ^(/.+)$ http://blog.kusnier.net$1 
+  RewriteRule ^(/.+)$ http://blog.kusnier.net$1 [R=permanent,L]
 
   ProxyRequests Off
 
